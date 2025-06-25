@@ -15,21 +15,25 @@ class UsersSeeder extends Seeder
     public function run(): void
     {
         // Crear usuario Braulio Miramontes
-        User::create([
-            'name' => 'Braulio Miramontes',
-            'username' => 'braulio',
-            'email' => 'codingear@gmail.com',
-            'password' => Hash::make('password'),
-            'is_active' => true,
-        ]);
+        User::updateOrCreate(
+            ['email' => 'codingear@gmail.com'],
+            [
+                'name' => 'Braulio Miramontes',
+                'username' => 'braulio',
+                'password' => Hash::make('password'),
+                'is_active' => true,
+            ]
+        );
 
         // Crear usuario Susana Ahumada
-        User::create([
-            'name' => 'Susana Ahumada',
-            'username' => 'susana',
-            'email' => 'susanaahumadadeleon@gmail.com',
-            'password' => Hash::make('password'),
-            'is_active' => true,
-        ]);
+        User::updateOrCreate(
+            ['email' => 'susanaahumadadeleon@gmail.com'],
+            [
+                'name' => 'Susana Ahumada',
+                'username' => 'susana',
+                'password' => Hash::make('password'),
+                'is_active' => true,
+            ]
+        );
     }
 }
