@@ -2,6 +2,41 @@
 
 Esta API permite consultar las actividades asignadas a los usuarios por día de la semana.
 
+## Autenticación
+
+La API utiliza autenticación básica (Basic Auth) para todas las solicitudes a los endpoints de usuario.
+
+**Credenciales requeridas:**
+- Usuario: `webmaker`
+- Contraseña: `Meg@blaster007@7251`
+
+**Cómo usar la autenticación:**
+
+### En curl:
+```bash
+curl -u webmaker:Meg@blaster007@7251 http://localhost/api/users/username
+```
+
+### En JavaScript (fetch):
+```javascript
+const username = 'webmaker';
+const password = 'Meg@blaster007@7251';
+const credentials = btoa(`${username}:${password}`);
+
+fetch('/api/users/username', {
+    headers: {
+        'Authorization': `Basic ${credentials}`
+    }
+})
+```
+
+### En Postman:
+1. Ve a la pestaña "Authorization"
+2. Selecciona "Basic Auth"
+3. Ingresa:
+   - Username: `webmaker`
+   - Password: `Meg@blaster007@7251`
+
 ## Endpoints Disponibles
 
 ### Base URL

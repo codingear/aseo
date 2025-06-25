@@ -9,7 +9,7 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 // API routes for user activities
-Route::prefix('users')->group(function () {
+Route::prefix('users')->middleware('basicauth')->group(function () {
     // Get user by username
     Route::get('{username}', [UserActivityController::class, 'getUserByUsername']);
     
