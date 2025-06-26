@@ -34,16 +34,23 @@ class ActivitySeeder extends Seeder
             'Barrer + trapear planta baja',
             'Lavar baño planta baja',
             'Llevar a Yusef (9 am)',
+            'Hacer comida',
+            'Lavar trastes de la comida',
+            'Pasear a los niños (tarde)',
             'Hacer desayuno',
+            'Lavar trastes del desayuno',
             'Barrer + trapear planta alta',
             'Ordenar sala/comedor',
             'Recoger a Yusef (12 pm)',
+            'Hacer cena',
+            'Lavar trastes de la cena',
             'Ordenar cocina',
             'Limpiar sillones',
             'Limpiar espejos',
             'Organizar despensa',
             'Ayudar con desayuno',
             'Organizar garaje',
+            'Pasear a los niños (mañana)',
             'Limpieza profunda cocina',
             'Lavar ropa',
             'Sacar basura orgánica',
@@ -70,26 +77,38 @@ class ActivitySeeder extends Seeder
                     'Sacar basura (8:30 am)',
                     'Barrer + trapear planta baja',
                     'Lavar baño planta baja',
-                    'Llevar a Yusef (9 am)'
+                    'Llevar a Yusef (9 am)',
+                    'Hacer comida',
+                    'Lavar trastes de la comida',
+                    'Pasear a los niños (tarde)'
                 ],
                 $susana->id => [
                     'Hacer desayuno',
+                    'Lavar trastes del desayuno',
                     'Barrer + trapear planta alta',
                     'Ordenar sala/comedor',
-                    'Recoger a Yusef (12 pm)'
+                    'Recoger a Yusef (12 pm)',
+                    'Hacer cena',
+                    'Lavar trastes de la cena'
                 ]
             ],
             // MARTES
             $martes->id => [
                 $braulio->id => [
                     'Hacer desayuno',
+                    'Lavar trastes del desayuno',
                     'Barrer + trapear planta baja',
-                    'Recoger a Yusef (12 pm)'
+                    'Recoger a Yusef (12 pm)',
+                    'Hacer cena',
+                    'Lavar trastes de la cena'
                 ],
                 $susana->id => [
                     'Ordenar cocina',
                     'Llevar a Yusef (9 am)',
-                    'Limpiar sillones'
+                    'Limpiar sillones',
+                    'Hacer comida',
+                    'Lavar trastes de la comida',
+                    'Pasear a los niños (tarde)'
                 ]
             ],
             // MIÉRCOLES
@@ -97,25 +116,37 @@ class ActivitySeeder extends Seeder
                 $braulio->id => [
                     'Sacar basura (8:30 am)',
                     'Barrer + trapear planta baja',
-                    'Llevar a Yusef (9 am)'
+                    'Llevar a Yusef (9 am)',
+                    'Hacer comida',
+                    'Lavar trastes de la comida',
+                    'Pasear a los niños (tarde)'
                 ],
                 $susana->id => [
                     'Hacer desayuno',
+                    'Lavar trastes del desayuno',
                     'Barrer + trapear planta alta',
-                    'Recoger a Yusef (12 pm)'
+                    'Recoger a Yusef (12 pm)',
+                    'Hacer cena',
+                    'Lavar trastes de la cena'
                 ]
             ],
             // JUEVES
             $jueves->id => [
                 $braulio->id => [
                     'Hacer desayuno',
+                    'Lavar trastes del desayuno',
                     'Barrer + trapear planta alta',
-                    'Recoger a Yusef (12 pm)'
+                    'Recoger a Yusef (12 pm)',
+                    'Hacer cena',
+                    'Lavar trastes de la cena'
                 ],
                 $susana->id => [
                     'Llevar a Yusef (9 am)',
                     'Limpiar espejos',
-                    'Organizar despensa'
+                    'Organizar despensa',
+                    'Hacer comida',
+                    'Lavar trastes de la comida',
+                    'Pasear a los niños (tarde)'
                 ]
             ],
             // VIERNES
@@ -123,32 +154,49 @@ class ActivitySeeder extends Seeder
                 $braulio->id => [
                     'Sacar basura (8:30 am)',
                     'Barrer + trapear planta baja',
-                    'Llevar a Yusef (9 am)'
+                    'Llevar a Yusef (9 am)',
+                    'Hacer comida',
+                    'Lavar trastes de la comida'
                 ],
                 $susana->id => [
                     'Hacer desayuno',
+                    'Lavar trastes del desayuno',
                     'Barrer + trapear planta alta',
-                    'Recoger a Yusef (12 pm)'
+                    'Recoger a Yusef (12 pm)',
+                    'Hacer cena',
+                    'Lavar trastes de la cena',
+                    'Pasear a los niños (tarde)'
                 ]
             ],
             // SÁBADO
             $sabado->id => [
                 $braulio->id => [
                     'Ayudar con desayuno',
-                    'Organizar garaje'
+                    'Lavar trastes del desayuno',
+                    'Organizar garaje',
+                    'Hacer cena',
+                    'Lavar trastes de la cena',
+                    'Pasear a los niños (mañana)'
                 ],
                 $susana->id => [
                     'Limpieza profunda cocina',
-                    'Lavar ropa'
+                    'Lavar ropa',
+                    'Hacer comida',
+                    'Lavar trastes de la comida'
                 ]
             ],
             // DOMINGO
             $domingo->id => [
                 $braulio->id => [
-                    'Sacar basura orgánica'
+                    'Sacar basura orgánica',
+                    'Hacer desayuno',
+                    'Lavar trastes del desayuno',
+                    'Pasear a los niños (mañana)'
                 ],
                 $susana->id => [
-                    'Preparar comida semanal'
+                    'Preparar comida semanal',
+                    'Hacer cena',
+                    'Lavar trastes de la cena'
                 ]
             ]
         ];
