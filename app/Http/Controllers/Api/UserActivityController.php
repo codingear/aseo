@@ -178,4 +178,92 @@ class UserActivityController extends Controller
             ], 500);
         }
     }
+
+    /**
+     * Get all users with their activities
+     * Returns only name, email, username and activity names
+     */
+    public function getAllUsersWithActivities(): JsonResponse
+    {
+        try {
+            $users = User::with(['userActivities.activity'])
+                ->where('is_active', true)
+                ->get()
+                ->map(function ($user) {
+                    return [
+                        'name' => $user->name,
+                        'email' => $user->email,
+                        'username' => $user->username,
+                        'activities' => $user->userActivities->map(function ($userActivity) {
+                            return [
+                                'name' => $userActivity->activity->name
+                            ];
+                        })
+                    ];
+                });
+
+            return response()->json([
+                'success' => true,
+                'data' => $users,
+                'message' => 'All users with activities retrieved successfully'
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Error retrieving users with activities: ' . $e->getMessage()
+            ], 500);
+        }
+    }
+
+    /**
+     * Get all users with their activities for today only
+     * Returns name, email, username and activity names for today
+     */
+    public function getAllUsersWithTodayActivities(): JsonResponse
+    {
+        try {
+            // Get current day of week (1=Monday, 7=Sunday)
+            $today = now()->dayOfWeek ?: 7;
+            
+            $users = User::with(['userActivities.activity', 'userActivities.weekday'])
+                ->where('is_active', true)
+                ->get()
+                ->map(function ($user) use ($today) {
+                    // Filter activities for today only
+                    $todayActivities = $user->userActivities
+                        ->filter(function ($userActivity) use ($today) {
+                            return $userActivity->weekday->day_number == $today;
+                        })
+                        ->map(function ($userActivity) {
+                            return [
+                                'name' => $userActivity->activity->name
+                            ];
+                        })
+                        ->values(); // Reset array keys
+                    
+                    return [
+                        'name' => $user->name,
+                        'email' => $user->email,
+                        'username' => $user->username,
+                        'activities' => $todayActivities
+                    ];
+                });
+
+            return response()->json([
+                'success' => true,
+                'data' => $users,
+                'today' => [
+                    'date' => now()->toDateString(),
+                    'day_name' => now()->format('l'),
+                    'day_number' => $today
+                ],
+                'message' => 'All users with today activities retrieved successfully'
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Error retrieving users with today activities: ' . $e->getMessage()
+            ], 500);
+        }
+    }
 }

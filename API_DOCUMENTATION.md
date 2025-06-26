@@ -176,6 +176,97 @@ GET /api/users/{username}/activities
 }
 ```
 
+### 5. Obtener todos los usuarios con sus actividades
+```
+GET /api/users/all-with-activities
+```
+
+**Descripción:** Retorna todos los usuarios activos con sus actividades asignadas. Solo incluye name, email, username del usuario y el name de cada actividad.
+
+**Respuesta:**
+```json
+{
+    "success": true,
+    "data": [
+        {
+            "name": "Braulio Miramontes",
+            "email": "codingear@gmail.com",
+            "username": "braulio",
+            "activities": [
+                {
+                    "name": "Ejercicio matutino"
+                },
+                {
+                    "name": "Limpiar cocina"
+                },
+                {
+                    "name": "Estudiar programación"
+                }
+            ]
+        },
+        {
+            "name": "Susana Ahumada",
+            "email": "susanaahumadadeleon@gmail.com",
+            "username": "susana",
+            "activities": [
+                {
+                    "name": "Leer libro"
+                },
+                {
+                    "name": "Caminar 30 minutos"
+                }
+            ]
+        }
+    ],
+    "message": "All users with activities retrieved successfully"
+}
+```
+
+### 6. Obtener todos los usuarios con sus actividades del día actual
+```
+GET /api/users/all-with-today-activities
+```
+
+**Descripción:** Retorna todos los usuarios activos con sus actividades asignadas únicamente para el día de la semana actual. Solo incluye name, email, username del usuario y el name de cada actividad programada para hoy.
+
+**Respuesta:**
+```json
+{
+    "success": true,
+    "data": [
+        {
+            "name": "Braulio Miramontes",
+            "email": "codingear@gmail.com",
+            "username": "braulio",
+            "activities": [
+                {
+                    "name": "Ejercicio matutino"
+                },
+                {
+                    "name": "Revisar emails"
+                }
+            ]
+        },
+        {
+            "name": "Susana Ahumada",
+            "email": "susanaahumadadeleon@gmail.com",
+            "username": "susana",
+            "activities": [
+                {
+                    "name": "Leer libro"
+                }
+            ]
+        }
+    ],
+    "today": {
+        "date": "2025-06-25",
+        "day_name": "Wednesday",
+        "day_number": 3
+    },
+    "message": "All users with today activities retrieved successfully"
+}
+```
+
 ## Códigos de Respuesta
 
 - `200`: Éxito
@@ -194,6 +285,12 @@ curl -X GET "http://localhost/api/users/usuario123/activities/weekday/1"
 
 # Obtener actividades del martes por nombre
 curl -X GET "http://localhost/api/users/usuario123/activities/weekday/martes"
+
+# Obtener todos los usuarios con sus actividades
+curl -u webmaker:Meg@blaster007@7251 -X GET "http://localhost/api/users/all-with-activities"
+
+# Obtener todos los usuarios con sus actividades del día actual
+curl -u webmaker:Meg@blaster007@7251 -X GET "http://localhost/api/users/all-with-today-activities"
 ```
 
 ## Notas Importantes

@@ -10,6 +10,12 @@ Route::get('/user', function (Request $request) {
 
 // API routes for user activities
 Route::prefix('users')->middleware('basicauth')->group(function () {
+    // Get all users with their activities
+    Route::get('all-with-activities', [UserActivityController::class, 'getAllUsersWithActivities']);
+    
+    // Get all users with today's activities only
+    Route::get('all-with-today-activities', [UserActivityController::class, 'getAllUsersWithTodayActivities']);
+    
     // Get user by username
     Route::get('{username}', [UserActivityController::class, 'getUserByUsername']);
     
